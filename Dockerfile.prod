@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY . .
 
-RUN go build .
+RUN GOOS=linux go build -o server.
