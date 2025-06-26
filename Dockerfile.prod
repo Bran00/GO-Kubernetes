@@ -1,11 +1,11 @@
-from golang:latest
+# syntax=docker/dockerfile:1
+# you need pass the right version of GO
+FROM golang:1.23-alpine AS builder 
 
 WORKDIR /app
-
 COPY . .
- -
-RUN GOOS=linux go build -ldflags="-w -s" -o server .
+RUN GOOS=linux CGO_ENABLED=0 go build -ldflags="-w -s" -o server .
 
 FROM scratch
 COPY --from=builder /app/server .
-CMD ["/server"]
+CMD ["./server"]
