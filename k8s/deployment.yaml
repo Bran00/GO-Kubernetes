@@ -23,6 +23,7 @@ spec:
             memory: "16Mi"
             cpu: "50m"
         
+        # Here your put your probe
         # startup probe
         startupProbe:
           httpGet:
